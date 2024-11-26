@@ -1,7 +1,10 @@
-import { Controller, Get, Param } from '@nestjs/common';
+import { Controller, Get, Param, UseGuards } from '@nestjs/common';
 import { TransactionLogService } from './transaction-log.service';
+import { AuthGuard } from 'src/auth/auth.guard';
 
 @Controller('transaction-logs')
+@UseGuards(AuthGuard)
+
 export class TransactionLogController {
   constructor(private readonly transactionLogService: TransactionLogService) { }
 

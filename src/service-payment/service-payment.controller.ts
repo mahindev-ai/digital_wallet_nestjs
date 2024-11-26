@@ -1,7 +1,10 @@
-import { Controller, Post, Get, Param, Body } from '@nestjs/common';
+import { Controller, Post, Get, Param, Body, UseGuards } from '@nestjs/common';
 import { ServicePaymentService } from './service-payment.service';
+import { AuthGuard } from 'src/auth/auth.guard';
 
 @Controller('service-payment')
+@UseGuards(AuthGuard)
+
 export class ServicePaymentController {
   constructor(private readonly servicePaymentService: ServicePaymentService) { }
 

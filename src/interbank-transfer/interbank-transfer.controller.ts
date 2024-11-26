@@ -1,7 +1,10 @@
-import { Controller, Get, Post, Put, Delete, Body } from '@nestjs/common';
+import { Controller, Get, Post, Put, Delete, Body, UseGuards } from '@nestjs/common';
 import { InterbankTransferService } from './interbank-transfer.service';
+import { AuthGuard } from 'src/auth/auth.guard';
 
 @Controller('interbank-transfer')
+@UseGuards(AuthGuard)
+
 export class InterbankTransferController {
   constructor(private readonly interbankTransferService: InterbankTransferService) { }
 

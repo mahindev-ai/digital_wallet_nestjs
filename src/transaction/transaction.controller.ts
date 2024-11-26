@@ -1,7 +1,10 @@
-import { Controller, Get, Post, Put, Delete, Param, Body } from '@nestjs/common';
+import { Controller, Get, Post, Put, Delete, Param, Body, UseGuards } from '@nestjs/common';
 import { TransactionService } from './transaction.service';
+import { AuthGuard } from 'src/auth/auth.guard';
 
 @Controller('transactions')
+@UseGuards(AuthGuard)
+
 export class TransactionController {
   constructor(private readonly transactionService: TransactionService) { }
 

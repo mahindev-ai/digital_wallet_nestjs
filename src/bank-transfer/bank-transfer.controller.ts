@@ -1,11 +1,13 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, UseGuards } from '@nestjs/common';
 import { BankTransferService } from './bank-transfer.service';
 import { CreateBankTransferDto } from './dto/create-bank-transfer.dto';
 import { UpdateBankTransferDto } from './dto/update-bank-transfer.dto';
+import { AuthGuard } from 'src/auth/auth.guard';
 
 @Controller('bank-transfer')
+@UseGuards(AuthGuard)
 export class BankTransferController {
-  constructor(private readonly bankTransferService: BankTransferService) {}
+  constructor(private readonly bankTransferService: BankTransferService) { }
 
   @Post()
   create(@Body() createBankTransferDto: CreateBankTransferDto) {
